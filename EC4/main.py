@@ -8,7 +8,6 @@ import data
 import utils
 import visualisation
 
-
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -39,19 +38,19 @@ def process_instance(instance_name: str, nodes: List[data.Node]):
             cand_k=0,
         ),
         algorithms.MethodSpec(
-            name="Candidates_Steepest_2opt_Random_K5",
-            use_cand=True,
-            cand_k=5,
-        ),
-        algorithms.MethodSpec(
             name="Candidates_Steepest_2opt_Random_K10",
             use_cand=True,
             cand_k=10,
         ),
         algorithms.MethodSpec(
-            name="Candidates_Steepest_2opt_Random_K15",
+            name="Candidates_Steepest_2opt_Random_K20",
             use_cand=True,
-            cand_k=15,
+            cand_k=20,
+        ),
+        algorithms.MethodSpec(
+            name="Candidates_Steepest_2opt_Random_K30",
+            use_cand=True,
+            cand_k=30,
         ),
     ]
 
