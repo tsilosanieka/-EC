@@ -15,7 +15,6 @@ class Node:
     y: int  # Changed from float
     cost: int
 
-
 def euclidean_distance(n1: Node, n2: Node) -> float:
     """
     Calculates the Euclidean distance between two nodes.
@@ -56,26 +55,23 @@ def read_nodes(file_path: str) -> List[Node]:
         with open(file_path, mode='r', encoding='utf-8') as file:
             # Specify the semicolon delimiter
             reader = csv.reader(file, delimiter=';')
-
-            # Removed the line that skips the header
-
             # Read data rows
             # 'i' will be the 0-based index of the data row
             for i, row in enumerate(reader):
-                # row_num is now i + 1 (since there's no header)
+                # MODIFIED: row_num is now i + 1 (since there's no header)
                 row_num = i + 1
 
                 # Skip empty lines
                 if not row:
                     continue
 
-                # Expecting 3 columns
+                #Expecting 3 columns
                 if len(row) < 3:
                     logging.warning(f"Skipping malformed row {row_num}: {row}")
                     continue
 
                 try:
-                    #Map 3 columns and generate ID
+                    # Map 3 columns and generate ID
                     node = Node(
                         id=i,  # Dynamically assign ID (0, 1, 2...)
                         x=int(row[0]),  # Column 0 is X (as int)
