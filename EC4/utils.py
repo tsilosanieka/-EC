@@ -5,8 +5,6 @@ import random
 from dataclasses import dataclass
 from typing import List, Tuple
 
-# We need the Solution class for type hinting in calculate_statistics
-# This assumes it's in a file named algorithms.py
 try:
     from algorithms import Solution
 except ImportError:
@@ -17,7 +15,6 @@ except ImportError:
     class Solution:
         path: List[int]
         objective: int
-
 
 @dataclass
 class Row:
@@ -33,7 +30,7 @@ class Row:
     best_path: List[int]
     best_value: int
 
-
+# A regex to find all characters that are unsafe for filenames
 _UNSAFE_CHARS_RE = re.compile(r'[<>:"/\\|?* ]')
 
 
@@ -43,10 +40,7 @@ def sanitize_file_name(filename: str) -> str:
     Equivalent to SanitizeFileName in sanitizer.go.
     """
     return _UNSAFE_CHARS_RE.sub('_', filename)
-
-
-# --- From stats.go ---
-
+    
 def calculate_statistics(solutions: List[Solution]) -> Tuple[int, int, float]:
     """
     Calculates the min, max, and average objective values from a list of solutions.
@@ -70,7 +64,6 @@ def calculate_statistics(solutions: List[Solution]) -> Tuple[int, int, float]:
     avg_val = total_val / len(solutions)
     return min_val, max_val, avg_val
 
-
 def generate_start_node_indices(n: int) -> List[int]:
     """
     Generates a list of n random start node indices (from 0 to n-1).
@@ -80,7 +73,6 @@ def generate_start_node_indices(n: int) -> List[int]:
     which uses generateRandomPath instead.
     """
     return [random.randint(0, n - 1) for _ in range(n)]
-
 
 def write_results_csv(instance_name: str, rows: List[Row]):
     """
