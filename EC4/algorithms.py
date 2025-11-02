@@ -53,7 +53,6 @@ def generate_random_path(n: int) -> List[int]:
     """
     if n == 0:
         return []
-
     k = 100
 
     if k > n:
@@ -81,7 +80,7 @@ def _build_candidate_list(n: int, D: List[List[int]], costs: List[int], K: int) 
         distances.sort()
         candidate_list[i] = {neighbor_idx for _, neighbor_idx in distances[:K]}
     return candidate_list
-
+    
 def local_search_steepest(
         initial_path: List[int],
         D: List[List[int]],
@@ -170,8 +169,6 @@ def local_search_steepest(
                             best_move = ('exchange', i_idx, node_j)
 
         else:
-            # --- INEFFICIENT BASELINE SEARCH ---
-
             # 1. Find best Inter-route (Exchange) move (O(n_path * n_out))
             for i_idx, node_i in enumerate(current_path):
                 i_prev_node = current_path[i_idx - 1]
